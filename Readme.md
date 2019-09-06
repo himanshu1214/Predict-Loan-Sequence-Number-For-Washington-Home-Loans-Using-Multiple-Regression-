@@ -7,7 +7,7 @@ Regression model and statistics measurement to conclude the Model and its parame
 
 ## Datasets and Description:
 HDMA Washington State Home Loans dataset
-https://www.kaggle.com/miker400/washington-state-home-mortgage-hdma2016/downloads/washington-state-home-mortgage-hdma2016.zip/1
+\n https://www.kaggle.com/miker400/washington-state-home-mortgage-hdma2016/downloads/washington-state-home-mortgage-hdma2016.zip/1
 
 Datasets consist of 467 rows and 47 variables. We chose only numerical variables in order to analyze the relationship of continuous variables with sequence variable.
 
@@ -31,7 +31,7 @@ Datasets consist of 467 rows and 47 variables. We chose only numerical variables
 #### BoxPlot:
 To understand the raw data and its distribution.
 
-![ text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.jpg)
+![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.jpg)
 
 As we can see from boxplot, there are bunches of outliers. Therefore, we need to clean our raw data. In the column of applicant income 000s, we replaced the NA value by the mean of the existed data. Then we deleted other rows which contain NA value (300 out of 467k rows).
 
