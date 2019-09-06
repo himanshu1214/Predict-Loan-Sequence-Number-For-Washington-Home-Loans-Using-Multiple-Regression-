@@ -25,12 +25,13 @@ Datasets consist of 467 rows and 47 variables. We chose only numerical variables
 
 ## Data Exploration:
 #### Data Head
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/df.PNG)
+![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/df.PNG)
 
 
 #### BoxPlot:
 To understand the raw data and its distribution.
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.PNG)
+
+![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.PNG)
 
 As we can see from boxplot, there are bunches of outliers. Therefore, we need to clean our raw data. In the column of applicant income 000s, we replaced the NA value by the mean of the existed data. Then we deleted other rows which contain NA value (300 out of 467k rows).
 
@@ -39,7 +40,7 @@ We used Chi Square Quantile-Quantile Plots to show the relationship between data
 In multivariate analyses, this is often used both to assess multivariate normality and check for outliers, using the Mahalanobis squared distances (𝐷2) of observations from the centroid.
 When the slope that Chi Square displaces tend to 1, the data tends to standard normal distribution.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/chisquare_test.PNG)
+![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/chisquare_test.PNG)
 
 As we can see from our Q-Q plot, the filtered data distributes far from the line that has slope of 1 (45°), which, refers that our filtered data is not perfectly normally distributed.
 
