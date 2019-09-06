@@ -28,14 +28,14 @@ Datasets consist of 467 rows and 47 variables. We chose only numerical variables
 ![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/df.jpg)
 
 
-#### BoxPlot:
+## BoxPlot:
 To understand the raw data and its distribution.
 
 ![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.jpg)
 
 As we can see from boxplot, there are bunches of outliers. Therefore, we need to clean our raw data. In the column of applicant income 000s, we replaced the NA value by the mean of the existed data. Then we deleted other rows which contain NA value (300 out of 467k rows).
 
-#### Standardizing and Normalizing Data
+## Standardizing and Normalizing Data
 We used Chi Square Quantile-Quantile Plots to show the relationship between data-based values which should be distributed as χ^2 and corresponding quantiles from the χ^2 distribution.
 In multivariate analyses, this is often used both to assess multivariate normality and check for outliers, using the Mahalanobis squared distances (𝐷2) of observations from the centroid.
 When the slope that Chi Square displaces tend to 1, the data tends to standard normal distribution.
@@ -55,7 +55,7 @@ As is shown in the Q-Q plot above, after standardizing and normalizing the filte
 ![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/normal_hist.jpg)
 The histograms reflect intuitively that the data is normally distributed.
 
-#### Correlation Matrix
+## Correlation Matrix
 We used correlation matrix to check the independence between variables in a pair at the same time. For which, we wanted to find out the highly correlated variables (correlation coefficient is larger than 0.6), so as to delete one of the variables in the pair as its highly correlated variable can represent the deleted one. Upon which, we would get less variables to optimize our regression model.
 
 ![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/correlation.jpg)
@@ -68,7 +68,7 @@ Therefore, we deleted number of owner occupied units, so that population and pop
 #### 𝐻0:the regression is not significant
 #### 𝐻1: the regression issignificant
 We built up 4 regression models to find the best model for our data.
-#### 1st model:
+## 1st model:
 Original multiple regression model, which contains all the 9 variables. 𝑦𝑖= 𝛽0+𝛽1𝑥1𝑖+𝛽2𝑥2𝑖+𝛽3𝑥3𝑖+𝛽4𝑥4𝑖+𝛽5𝑥5𝑖+𝛽6𝑥6𝑖+⋯+𝛽9𝑥9𝑖
 After calculation,
 
@@ -82,7 +82,7 @@ The test result:
 
 𝑅𝑎𝑑𝑗2=0.008217, which is far from 1 implying the model has a poor fit. However, the p-value is near to zero, which tells we need to reject our 𝐻0. 𝑅𝑎𝑑𝑗2≈ 1.0 can be achieved at the expense of error degrees of freedom when an excess of model terms is employed. However, 𝑅𝑎𝑑𝑗2= 1, describing a model with a near perfect fit, does not always result in a model that predicts well. Therefore, the p-value<2.2*10−16 indicates that the regression explained by the model is significant.
 
-#### 𝟐𝒏𝒅model:
+## 𝟐𝒏𝒅model:
 Removal of variable number of owner occupied units(as is mentioned in the correlation matrix), then we obtain the 2𝑛𝑑model.
 
 ![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model2.jpg)
@@ -93,7 +93,7 @@ The test result:
 
 The 2𝑛𝑑model we built, comes to almost the same conclusion with even smaller 𝑅𝑎𝑑𝑗2 , yet p-value is near to zero. Therefore, we reject 𝐻0, the p-value<2.2*10−16 indicates that the regression explained by the model is significant.
 
-#### 𝟑𝒓𝒅model:
+## 𝟑𝒓𝒅model:
 We used stepwise selection to combine forward and backward selection.
 Forward selection:        
                           𝑦𝑖= 𝛽0+𝛽1𝑥1𝑖 𝑦𝑖= 𝛽0+𝛽1𝑥1𝑖+𝛽2𝑥2𝑖
@@ -118,7 +118,7 @@ The result is:
 
 As the final model is the same, so the conclusion is the same.
 
-#### 𝟒𝒕𝒉model:
+## 𝟒𝒕𝒉model:
 We chose 3 variables (minority population, hud median family income, loan amount 000s) with the highest correlation to sequence number to perform our regression model
 
 ![alt text](https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model4.jpg)
@@ -131,7 +131,7 @@ We can see, the 𝑅𝑎𝑑𝑗2=0006865, which is near to zero. In the meanwhi
 Since all the p-value are the same (equal to 2.2*10−16), we would like to choose the 1st(3rd) as our best model as its 𝑅𝑎𝑑𝑗2 is the highest. 𝑦𝑖= −5.309𝑒−15−5.978𝑒−3𝑥1𝑖−8.992𝑒−3𝑥2𝑖+1.833𝑒−2𝑥3𝑖+3.03𝑒−2𝑥4𝑖+⋯−2.538𝑒−2𝑥9𝑖
 Comparing all the 4 models above, we can see, all the 𝑅𝑎𝑑𝑗2 are far from 1, which implies the models have poor fit. However, all the 4 p-vale are almost to zero (far less than 0.0001), which indicates that the regression explained by the model is significant. In fact, in 𝑅𝑎𝑑𝑗2′𝑠 employment in multiple regression, the dangers are even more pronounced since the temptation to overfit is so great. 𝑅𝑎𝑑𝑗2≈ 1.0 can be achieved at the expense of error degrees of freedom when an excess of model terms is employed. However, 𝑅𝑎𝑑𝑗2= 1, describing a model with a near perfect fit, does not always result in a model that predicts well. Thus, according to our tests show, we can confidently reject 𝐻0, as our regression is significant.
 
-#### Homoscedasticity Test:
+## Homoscedasticity Test:
 
 To perform the residual test and come to a conclusion which models fit the best to clean data, we test all of the 4 models.
 The white line is the expected model well as the red line is the actual model we performed. We can compare 4 models by the homoscedasticity test.
