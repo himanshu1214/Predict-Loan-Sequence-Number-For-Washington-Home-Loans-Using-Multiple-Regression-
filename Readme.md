@@ -25,13 +25,13 @@ Datasets consist of 467 rows and 47 variables. We chose only numerical variables
 
 ## Data Exploration:
 #### Data Head
-![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/df.PNG)
+![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/df.jpg)
 
 
 #### BoxPlot:
 To understand the raw data and its distribution.
 
-![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.PNG)
+![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/boxplot.jpg)
 
 As we can see from boxplot, there are bunches of outliers. Therefore, we need to clean our raw data. In the column of applicant income 000s, we replaced the NA value by the mean of the existed data. Then we deleted other rows which contain NA value (300 out of 467k rows).
 
@@ -40,25 +40,25 @@ We used Chi Square Quantile-Quantile Plots to show the relationship between data
 In multivariate analyses, this is often used both to assess multivariate normality and check for outliers, using the Mahalanobis squared distances (𝐷2) of observations from the centroid.
 When the slope that Chi Square displaces tend to 1, the data tends to standard normal distribution.
 
-![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/chisquare_test.PNG)
+![Alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/chisquare_test.jpg)
 
 As we can see from our Q-Q plot, the filtered data distributes far from the line that has slope of 1 (45°), which, refers that our filtered data is not perfectly normally distributed.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/histogram.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/histogram.jpg)
 
 When we continued to draw the histogram, it is clear in the histograms above that the filtered data is not normal distribution.
 Therefore, it is necessary to standardize and normalize the filtered data.
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/normal_chi_square.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/normal_chi_square.jpg)
 
 As is shown in the Q-Q plot above, after standardizing and normalizing the filtered data, the data points distributed concentrated near the line with slope of 1. That gave us a clue that the data was then normally distributed.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/normal_hist.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/normal_hist.jpg)
 The histograms reflect intuitively that the data is normally distributed.
 
 ##### Correlation Matrix
 We used correlation matrix to check the independence between variables in a pair at the same time. For which, we wanted to find out the highly correlated variables (correlation coefficient is larger than 0.6), so as to delete one of the variables in the pair as its highly correlated variable can represent the deleted one. Upon which, we would get less variables to optimize our regression model.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/correlation.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/correlation.jpg)
 
 The closer correlation coefficient to 1 or -1, the stronger two variables correlated. We can tell the population and number of owner occupied units are highly correlated, number of owner occupied units and number of 1 to 4 family units are highly correlated, population and number of 1 to 4 family units are highly correlated.
 Therefore, we deleted number of owner occupied units, so that population and population and number of 1 to 4 family units can represent its impact to the response (sequence number).
@@ -72,24 +72,24 @@ We built up 4 regression models to find the best model for our data.
 Original multiple regression model, which contains all the 9 variables. 𝑦𝑖= 𝛽0+𝛽1𝑥1𝑖+𝛽2𝑥2𝑖+𝛽3𝑥3𝑖+𝛽4𝑥4𝑖+𝛽5𝑥5𝑖+𝛽6𝑥6𝑖+⋯+𝛽9𝑥9𝑖
 After calculation,
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model1.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model1.jpg)
 
 After calculation, our 1𝑠𝑡model is: 𝑦𝑖= −5.309𝑒−15−5.978𝑒−3𝑥1𝑖−8.992𝑒−3𝑥2𝑖+1.833𝑒−2𝑥3𝑖+3.03𝑒−2𝑥4𝑖+⋯−2.538𝑒−2𝑥9𝑖
 
 The test result:
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model1_result.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model1_result.jpg)
 
 𝑅𝑎𝑑𝑗2=0.008217, which is far from 1 implying the model has a poor fit. However, the p-value is near to zero, which tells we need to reject our 𝐻0. 𝑅𝑎𝑑𝑗2≈ 1.0 can be achieved at the expense of error degrees of freedom when an excess of model terms is employed. However, 𝑅𝑎𝑑𝑗2= 1, describing a model with a near perfect fit, does not always result in a model that predicts well. Therefore, the p-value<2.2*10−16 indicates that the regression explained by the model is significant.
 
 ###### 𝟐𝒏𝒅model:
 Removal of variable number of owner occupied units(as is mentioned in the correlation matrix), then we obtain the 2𝑛𝑑model.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model2.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model2.jpg)
 
 After calculation, our 2𝑛𝑑model is: 𝑦𝑖= −5.309𝑒−15+2.101𝑒−3𝑥1𝑖+1.283𝑒−3𝑥2𝑖+1.524𝑒−2𝑥3𝑖+6.008𝑒−4𝑥4𝑖+⋯−2.596𝑒−2𝑥9𝑖
 The test result:
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model2_result.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model2_result.jpg)
 
 The 2𝑛𝑑model we built, comes to almost the same conclusion with even smaller 𝑅𝑎𝑑𝑗2 , yet p-value is near to zero. Therefore, we reject 𝐻0, the p-value<2.2*10−16 indicates that the regression explained by the model is significant.
 
@@ -108,23 +108,23 @@ Backward Selection:
 
 After we applied our stepwise selection, we obtain the same variables as the 1st model.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model3.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model3.jpg)
 
 That is, our stepwise selection model is: 𝑦𝑖= −5.309𝑒−15−5.978𝑒−3𝑥1𝑖−8.992𝑒−3𝑥2𝑖+1.833𝑒−2𝑥3𝑖+3.03𝑒−2𝑥4𝑖+⋯−2.538𝑒−2𝑥9𝑖
 The result is:
 
- ![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model3_result.PNG)
+ ![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model3_result.jpg)
 
 As the final model is the same, so the conclusion is the same.
 
 ##### 𝟒𝒕𝒉model:
 We chose 3 variables (minority population, hud median family income, loan amount 000s) with the highest correlation to sequence number to perform our regression model
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model4.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model4.jpg)
 After calculation, the 4𝑡ℎmodel came as: 𝑦𝑖= −5.247𝑒−15+1.601𝑒−2𝑥3𝑖+5.331𝑒−2𝑥6𝑖+4.022𝑒−2𝑥7𝑖
 The result is:
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model4_res.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/model4_res.jpg)
 
 We can see, the 𝑅𝑎𝑑𝑗2=0006865, which is near to zero. In the meanwhile, the p-value = 2.2*10−16, which gives us the confidence to reject 𝐻0.
 Since all the p-value are the same (equal to 2.2*10−16), we would like to choose the 1st(3rd) as our best model as its 𝑅𝑎𝑑𝑗2 is the highest. 𝑦𝑖= −5.309𝑒−15−5.978𝑒−3𝑥1𝑖−8.992𝑒−3𝑥2𝑖+1.833𝑒−2𝑥3𝑖+3.03𝑒−2𝑥4𝑖+⋯−2.538𝑒−2𝑥9𝑖
@@ -135,7 +135,7 @@ Comparing all the 4 models above, we can see, all the 𝑅𝑎𝑑𝑗2 are far 
 To perform the residual test and come to a conclusion which models fit the best to clean data, we test all of the 4 models.
 The white line is the expected model well as the red line is the actual model we performed. We can compare 4 models by the homoscedasticity test.
 
-![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/homoscedasticity.PNG)
+![alt text] (https://github.com/himanshu1214/Predict-Loan-Sequence-Number-For-Washington-Home-Loans-Using-Multiple-Regression-/blob/master/img/homoscedasticity.jpg)
 The nearer the red line to the white line, the better the model fit. As we can see from the plot, combing with the 𝑅𝑎𝑑𝑗2 we obtained, the 1st and the 3rd red lines are the same nearer to the white lines than the 2nd and the 4th red lines.
 All in all, the perfect model is the 1st(3rd) model we built up.
 Conclusion and future
